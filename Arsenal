@@ -1,0 +1,29 @@
+-- local ez = loadstring(game:HttpGet((''),true))()
+-- ez.bre("option")
+
+-- options include: insta
+-- insta enables the insta kill (one shot = insta kill)
+
+
+-----------------------------------------------------------------------------------------------------------------------
+local module = {}
+
+function module.bre(opt)
+	if opt == "insta" then
+local met = getrawmetatable(game)
+setreadonly(met,false)
+local old = met.__namecall
+met.__namecall = function(t,...)
+local args = {...}
+if(getnamecallmethod()=="FireServer") then
+if(tostring(t) == "HitPart") then
+  for i = 0,25 do old(t,...)end
+end
+
+end
+return old(t,...)
+end
+	end
+end
+
+return module
