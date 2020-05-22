@@ -1,0 +1,49 @@
+-- local ez = loadstring(game:HttpGet((''),true))()
+-- ez.bre("option")
+
+-- options include: tools, planks, heal
+-- tools gives all the tools, planks is infinite planks, heal tries to heal all
+
+
+-----------------------------------------------------------------------------------------------------------------------
+local module = {}
+
+function module.bre(opt)
+	if opt == "tools" then
+game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("Bat")
+game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("MedKit")
+game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("TeddyBloxpin")
+game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("Cure")
+game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("Chips")
+game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("Cookie")
+game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("BloxyCola")
+game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("Pan")
+game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("Pie")
+game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("Apple")
+game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("Pizza")
+game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("Plank")
+	end
+	if opt == "planks" then
+while game:GetService"RunService".RenderStepped:wait(6) do
+game:GetService("ReplicatedStorage").RemoteEvents.RefreshPlanks:FireServer()
+end
+	end
+	if opt == "heal" then
+game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("Cure")
+wait(1)
+if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("Cure") then 
+        if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Cure") then 
+            game:GetService("ReplicatedStorage").RemoteEvents.BackpackEvent:FireServer("Equip", game:GetService("Players").LocalPlayer.Backpack.Cure)
+        else
+            game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("Cure")
+            wait(0.1)
+        end
+    end
+wait(1)
+    for i,v in pairs(game:GetService("Players"):GetChildren()) do
+game:GetService("ReplicatedStorage").RemoteEvents.CurePlayer:FireServer(v)
+end
+	end
+end
+
+return module
