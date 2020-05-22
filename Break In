@@ -1,4 +1,4 @@
--- local ez = loadstring(game:HttpGet((''),true))()
+-- local ez = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Patch-Shack/Easy-Modules/master/Break%20In'),true))()
 -- ez.bre("option")
 
 -- options include: tools, planks, heal
